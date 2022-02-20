@@ -52,14 +52,14 @@ public class ManageInputs : MonoBehaviour
 
     public void JumpPress()
     {
-        Debug.Log("Press");
+        //Debug.Log("Press");
         justPressed = true;
         pressedDown = true;
     }
 
     public void jumpRelease()
     {
-        Debug.Log("Release");
+        //Debug.Log("Release");
         justReleased = true;
         pressedDown = false;
     }
