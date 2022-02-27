@@ -33,8 +33,9 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity += new Vector2(speed * inputManager.GetJoystick().x, 0) * Time.deltaTime;
 
-        rb.velocity = new Vector2(.95f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
+        rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
 
+       
 
         //Debug.Log(rb.velocity);
         JumpHandler();
@@ -45,15 +46,26 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, jump);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") && transform.position.y-transform.localScale.y * .49 > collision.transform.position.y + collision.transform.localScale.y*.45f)
+        if (collision.gameObject.CompareTag("Ground") && !collision.gameObject.CompareTag("Player"))
         {
             grounded = true;
+            Debug.Log(collision.gameObject.name);
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && !collision.gameObject.CompareTag("Player"))
+        {
+            grounded = true;
+            Debug.Log(collision.gameObject.tag);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground")) grounded = false;
     }

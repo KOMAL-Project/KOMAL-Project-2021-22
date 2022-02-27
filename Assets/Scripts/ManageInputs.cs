@@ -22,7 +22,11 @@ public class ManageInputs : MonoBehaviour
         Vector2 joystickInput = GetJoystick();
 
         RectTransform nubR = nub.GetComponentInChildren<RectTransform>();
-        nubR.localPosition = joystickInput * joystick.GetComponent<RectTransform>().rect.height/4;
+
+        float nubRX = Mathf.Max(joystick.GetComponent<RectTransform>().rect.width / -2, Mathf.Min(joystick.GetComponent<RectTransform>().rect.width / 2, joystickInput.x * joystick.GetComponent<RectTransform>().rect.width / 2));
+        float nubRY = Mathf.Max(joystick.GetComponent<RectTransform>().rect.height / -2, Mathf.Min(joystick.GetComponent<RectTransform>().rect.height / 2, joystickInput.y * joystick.GetComponent<RectTransform>().rect.height / 2));
+
+        nubR.localPosition = new Vector2(nubRX, nubRY);
         //Debug.Log(joystickInput);
         
     }
