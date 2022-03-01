@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpInputStorage; // how early can the jump button be pressed before hitting ground
     [SerializeField] float jumpCancelChangeCoeff; // positive vertical speed loss coefficient (0 to 1) that applies when jump is released prematurely 
 
+    Camera cam;
+
+
     float timeSinceLand, timeSinceJumpPress; 
     bool grounded;
 
@@ -21,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         inputManager = InputManagerObj.GetComponent<ManageInputs>();
 
+        cam = Camera.main;
 
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, 0);
@@ -35,8 +39,9 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
 
-       
 
+        //cam.gameObject.transform.position = transform.position + new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10);
+        cam.gameObject.GetComponent<Rigidbody>().velocity = 2*(transform.position - cam.gameObject.transform.position + 2 *new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10));
         //Debug.Log(rb.velocity);
         JumpHandler();
     }
@@ -61,7 +66,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") && !collision.gameObject.CompareTag("Player"))
         {
             grounded = true;
-            Debug.Log(collision.gameObject.tag);
+            //Debug.Log(collision.gameObject.tag);
         }
     }
 

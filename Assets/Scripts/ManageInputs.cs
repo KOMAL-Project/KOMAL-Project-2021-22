@@ -33,23 +33,34 @@ public class ManageInputs : MonoBehaviour
 
     public Vector2 GetJoystick()
     {
+        Vector2 toReturn = new Vector2(0,0);
 
         float touchRadius = joystick.transform.localScale.x / 2;
 
         if (Input.touchCount <= 0) return new Vector2(0, 0);
-        Touch touch = Input.GetTouch(0);
 
-        Vector2 toReturn = new Vector2(touch.position.x - (joystickTransform.anchoredPosition.x), touch.position.y - joystickTransform.anchoredPosition.y); // get vector that gives touch vs. joystick origin
+        foreach(Touch touch in Input.touches)
+        {
+            
 
-        if (toReturn.magnitude > 750) return new Vector2(0, 0); // Make sure that the finger isn't TOO far away from the joystick.
+            toReturn = new Vector2(touch.position.x - (joystickTransform.anchoredPosition.x), touch.position.y - joystickTransform.anchoredPosition.y); // get vector that gives touch vs. joystick origin
 
-        toReturn /= joystickTransform.rect.width; // "normalize" vector to get each value between -1 and 1
-        toReturn = new Vector2(Mathf.Min(Mathf.Max(-1, toReturn.x), 1), Mathf.Min(Mathf.Max(-1, toReturn.y), 1)) * 2; // make sure no value goes above 1 or below -1
+            if (toReturn.magnitude < 750)
+            {
 
-        if (Mathf.Abs(toReturn.x) < deadzone) toReturn = new Vector2(0, toReturn.y);
-        if (Mathf.Abs(toReturn.y) < deadzone) toReturn = new Vector2(toReturn.x, 0);
+                toReturn /= joystickTransform.rect.width; // "normalize" vector to get each value between -1 and 1
+                toReturn = new Vector2(Mathf.Min(Mathf.Max(-1, toReturn.x), 1), Mathf.Min(Mathf.Max(-1, toReturn.y), 1)) * 2; // make sure no value goes above 1 or below -1
 
-        return toReturn;
+                if (Mathf.Abs(toReturn.x) < deadzone) toReturn = new Vector2(0, toReturn.y);
+                if (Mathf.Abs(toReturn.y) < deadzone) toReturn = new Vector2(toReturn.x, 0);
+
+                return toReturn;
+
+            }; // Make sure that the finger isn't TOO far away from the joystick.
+
+        }
+
+        return new Vector2(0,0);
     }
 
     
