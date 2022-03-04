@@ -5,7 +5,7 @@ using UnityEngine;
 public class ManageInputs : MonoBehaviour
 {
     [SerializeField] GameObject joystick, jumpButton, nub;
-    bool justReleased, justPressed, pressedDown;
+    public bool justReleased, justPressed, pressedDown;
     [SerializeField] float deadzone; // between 0 and 1
     RectTransform joystickTransform;
     private void Start()
@@ -41,7 +41,6 @@ public class ManageInputs : MonoBehaviour
 
         foreach(Touch touch in Input.touches)
         {
-            
 
             toReturn = new Vector2(touch.position.x - (joystickTransform.anchoredPosition.x), touch.position.y - joystickTransform.anchoredPosition.y); // get vector that gives touch vs. joystick origin
 
@@ -79,6 +78,7 @@ public class ManageInputs : MonoBehaviour
         pressedDown = false;
     }
 
+    /* Redundant
     public bool wasJumpPressed()
     {
         return justPressed;
@@ -92,5 +92,5 @@ public class ManageInputs : MonoBehaviour
     public bool isJumpDown()
     {
         return pressedDown;
-    }
+    }*/
 }

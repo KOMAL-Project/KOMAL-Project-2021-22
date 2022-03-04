@@ -152,13 +152,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302ffbfa37d78c24baf1f4b3ff00a4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  umbrellaPrefab: {fileID: 6645661703813261226, guid: cb701b4422d02a040afa772c928af9a0, type: 3}
   level: {fileID: 2800000, guid: e0b17602901f48c4ea75aaa01d1ce85f, type: 3}
-  tiles: {fileID: 0}
   tileList:
   - {fileID: 11400000, guid: 9b13258f08e23794fb064fac3222124e, type: 2}
   - {fileID: 11400000, guid: 13f3c5caefef86e49a8627d59ec11ef0, type: 2}
   - {fileID: 11400000, guid: f9abfc434deca3d439ea3a676e235e12, type: 2}
   - {fileID: 11400000, guid: 847bbb41e8efd7f408a31eb62e5cc697, type: 2}
+  - {fileID: 11400000, guid: 00747eee9178afb409fc94d851537c0a, type: 2}
+  tiles: {fileID: 0}
+  umbrellas: []
   tileMapObj: {fileID: 352276157}
 --- !u!4 &106394507
 Transform:
@@ -938,6 +941,9 @@ MonoBehaviour:
   joystick: {fileID: 1245172542}
   jumpButton: {fileID: 411113289}
   nub: {fileID: 850449126}
+  justReleased: 0
+  justPressed: 0
+  pressedDown: 0
   deadzone: 0
 --- !u!114 &994294242
 MonoBehaviour:
@@ -1084,12 +1090,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputManagerObj: {fileID: 994294239}
   speed: 10000
-  jump: 17
+  jump: 22.5
   maxSpeedX: 10
   maxFalling: -20
   coyoteTime: 0.15
   jumpInputStorage: 0.1
   jumpCancelChangeCoeff: 0.5
+  minTimeBetweenJumps: 0.25
 --- !u!50 &2011795523
 Rigidbody2D:
   serializedVersion: 4
