@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpCancelChangeCoeff; // positive vertical speed loss coefficient (0 to 1) that applies when jump is released prematurely 
     [SerializeField] private float minTimeBetweenJumps = 0.25f;
 
-    private Camera cam;
     private Rigidbody2D rb;
 
     private float timeSinceLand, timeSinceJumpPress, timeSinceJump; 
@@ -24,11 +23,8 @@ public class PlayerController : MonoBehaviour
     {
         inputManager = InputManagerObj.GetComponent<ManageInputs>();
 
-        cam = Camera.main;
-
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, 0);
-
     }
 
     // Update is called once per frame
@@ -38,8 +34,6 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
 
-        //cam.gameObject.transform.position = transform.position + new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10);
-        cam.gameObject.GetComponent<Rigidbody>().velocity = 2*(transform.position - cam.gameObject.transform.position + 2 *new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10));
         //Debug.Log(rb.velocity);
         JumpHandler();
     }
@@ -84,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     void JumpHandler()
     {
-        if (inputManager.pressedDown) timeSinceJumpPress = 0;
+        if (inputManager.isJumpDown()) timeSinceJumpPress = 0;
 
         if (!grounded) timeSinceLand += Time.deltaTime;
         else timeSinceLand = 0;
@@ -98,7 +92,7 @@ public class PlayerController : MonoBehaviour
         timeSinceJumpPress += Time.deltaTime;
         timeSinceJump += Time.deltaTime;
 
-        if (inputManager.justReleased)
+        if (inputManager.wasJumpReleased())
         {
             Debug.Log("TEST");
             if (rb.velocity.y > 0 && timeSinceJumpPress < coyoteTime) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpCancelChangeCoeff);
@@ -109,7 +103,6 @@ public class PlayerController : MonoBehaviour
 
     public void EndJump()
     {
-        //Debug.Log("TEST");
         if (rb.velocity.y > 0 && timeSinceJumpPress < coyoteTime) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpCancelChangeCoeff);
 
         timeSinceJumpPress = coyoteTime;

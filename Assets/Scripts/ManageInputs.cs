@@ -5,7 +5,7 @@ using UnityEngine;
 public class ManageInputs : MonoBehaviour
 {
     [SerializeField] GameObject joystick, jumpButton, nub;
-    public bool justReleased, justPressed, pressedDown;
+    private bool justReleased, justPressed, pressedDown;
     [SerializeField] float deadzone; // between 0 and 1
     RectTransform joystickTransform;
     private void Start()
@@ -78,7 +78,6 @@ public class ManageInputs : MonoBehaviour
         pressedDown = false;
     }
 
-    /* Redundant
     public bool wasJumpPressed()
     {
         return justPressed;
@@ -92,5 +91,5 @@ public class ManageInputs : MonoBehaviour
     public bool isJumpDown()
     {
         return pressedDown;
-    }*/
+    }
 }

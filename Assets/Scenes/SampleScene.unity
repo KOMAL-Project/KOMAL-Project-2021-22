@@ -686,6 +686,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -774,6 +775,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a379e8c3666b8f4d8c933f65f6de546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2011795521}
+  inputManager: {fileID: 994294241}
+  tileMap: {fileID: 352276157}
+  startZoom: 8
+  stopZoom: 16
+  minZoom: 6
+  maxZoom: 10
+  zoomSpeed: 10
 --- !u!1 &786270577
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,9 +962,6 @@ MonoBehaviour:
   joystick: {fileID: 1245172542}
   jumpButton: {fileID: 411113289}
   nub: {fileID: 850449126}
-  justReleased: 0
-  justPressed: 0
-  pressedDown: 0
   deadzone: 0
 --- !u!114 &994294242
 MonoBehaviour:
