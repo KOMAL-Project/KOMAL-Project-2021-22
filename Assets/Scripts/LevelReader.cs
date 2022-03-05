@@ -5,15 +5,15 @@ using UnityEngine.Tilemaps;
 
 public class LevelReader : MonoBehaviour
 {
-
+    [SerializeField] private GameObject umbrellaPrefab;
     [SerializeField] private Texture2D level;
+    [SerializeField] Tile[] tileList;
+
     public Tilemap tiles;
-    [SerializeField]
-    Tile[] tileList;
+    public List<GameObject> umbrellas = new List<GameObject>();
+
     public GameObject tileMapObj;
 
-    
-    // Start is called before the first frame update
     void Start()
     {
         tiles = tileMapObj.GetComponent<Tilemap>();
@@ -29,12 +29,19 @@ public class LevelReader : MonoBehaviour
             {
                 Color tempColor = level.GetPixel(i,j);
 
-                if(tempColor == Color.black)
+                if (tempColor == Color.black)
                 {
-                    if (i % 2 == 0 && j % 2 == 0) tiles.SetTile(new Vector3Int(i,j,0), tileList[0]);
+                    if (i % 2 == 0 && j % 2 == 0) tiles.SetTile(new Vector3Int(i, j, 0), tileList[0]);
                     else if (i % 2 == 1 && j % 2 == 0) tiles.SetTile(new Vector3Int(i, j, 0), tileList[1]);
                     else if (i % 2 == 0 && j % 2 == 1) tiles.SetTile(new Vector3Int(i, j, 0), tileList[2]);
                     else tiles.SetTile(new Vector3Int(i, j, 0), tileList[3]);
+                }
+                else if (tempColor == Color.cyan && umbrellaPrefab) 
+                {
+                    tiles.SetTile(new Vector3Int(i, j, 0), tileList[4]);
+
+                    GameObject tempUmbrella = Instantiate(umbrellaPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
+                    umbrellas.Add(tempUmbrella);
                 }
             }
         }
