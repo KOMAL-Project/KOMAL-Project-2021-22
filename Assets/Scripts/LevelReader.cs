@@ -5,12 +5,15 @@ using UnityEngine.Tilemaps;
 
 public class LevelReader : MonoBehaviour
 {
-    [SerializeField] private GameObject umbrellaPrefab;
+    [SerializeField] private GameObject umbrellaPrefab, crabPrefab, checkpointPrefab;
     [SerializeField] private Texture2D level;
     [SerializeField] Tile[] tileList;
 
     public Tilemap tiles;
     public List<GameObject> umbrellas = new List<GameObject>();
+    public List<GameObject> crabs = new List<GameObject>();
+    public List<GameObject> checkpoints = new List<GameObject>();
+
 
     public GameObject tileMapObj;
 
@@ -38,11 +41,22 @@ public class LevelReader : MonoBehaviour
                 }
                 else if (tempColor == Color.cyan && umbrellaPrefab) 
                 {
-                    tiles.SetTile(new Vector3Int(i, j, 0), tileList[4]);
+                    //tiles.SetTile(new Vector3Int(i, j, 0), tileList[4]);
 
                     GameObject tempUmbrella = Instantiate(umbrellaPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
                     umbrellas.Add(tempUmbrella);
                 }
+                else if(tempColor == Color.red)
+                {
+                    GameObject tempCheckpoint = Instantiate(checkpointPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)) + new Vector3(.5f, .5f, 0), Quaternion.identity);
+                    checkpoints.Add(tempCheckpoint);
+                }
+                else if (tempColor == new Color(1, 127f/255f, 0))
+                {
+                    GameObject tempCrab = Instantiate(crabPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
+                    crabs.Add(tempCrab);
+                }
+
             }
         }
     }
