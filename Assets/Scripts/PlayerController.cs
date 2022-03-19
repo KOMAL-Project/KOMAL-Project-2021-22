@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpCancelChangeCoeff; // positive vertical speed loss coefficient (0 to 1) that applies when jump is released prematurely 
     [SerializeField] private float minTimeBetweenJumps = 0.25f;
     private GameObject checkpoint; // the transform of this object is where the player respawns.
+    private Animator anim;
 
     private Camera cam;
     private Rigidbody2D rb;
@@ -27,8 +28,10 @@ public class PlayerController : MonoBehaviour
 
         cam = Camera.main;
 
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, 0);
+        
 
     }
 
@@ -43,6 +46,12 @@ public class PlayerController : MonoBehaviour
 
         //cam.gameObject.transform.position = transform.position + new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10);
         cam.gameObject.GetComponent<Rigidbody>().velocity = 2*(transform.position - cam.gameObject.transform.position + 2 *new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10));
+
+        // Handle Animations
+        anim.SetFloat("X Speed", Mathf.Abs(rb.velocity.x));
+        anim.SetFloat("Y Speed", rb.velocity.y);
+        if(Mathf.Abs(rb.velocity.x) > 0.05f) transform.localScale = rb.velocity.x > 0 ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
+
         //Debug.Log(rb.velocity);
         JumpHandler();
     }
@@ -77,7 +86,12 @@ public class PlayerController : MonoBehaviour
 
                 if (values) Bounce(values.launchSpeed, values.maintainVelocityPercent);
             }
-            else if (collision.gameObject.CompareTag("Checkpoint")) checkpoint = collision.gameObject;
+            else if (collision.gameObject.CompareTag("Checkpoint"))
+            {
+                if(checkpoint != null) checkpoint.GetComponent<Animator>().SetBool("Lit", false);
+                checkpoint = collision.gameObject;
+                checkpoint.GetComponent<Animator>().SetBool("Lit", true);
+            }
         }
     }
 
