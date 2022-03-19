@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpInputStorage; // how early can the jump button be pressed before hitting ground
     [SerializeField] private float jumpCancelChangeCoeff; // positive vertical speed loss coefficient (0 to 1) that applies when jump is released prematurely 
     [SerializeField] private float minTimeBetweenJumps = 0.25f;
+    private GameObject checkpoint; // the transform of this object is where the player respawns.
 
     private Camera cam;
     private Rigidbody2D rb;
@@ -34,9 +35,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity += new Vector2(speed * inputManager.GetJoystick().x, 0) * Time.deltaTime;
 
+        rb.velocity += new Vector2(speed * inputManager.GetJoystick().x, 0) * Time.deltaTime;
         rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
+        
+
 
         //cam.gameObject.transform.position = transform.position + new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10);
         cam.gameObject.GetComponent<Rigidbody>().velocity = 2*(transform.position - cam.gameObject.transform.position + 2 *new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10));
@@ -49,7 +52,16 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, jump);
     }
 
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Killing"))
+        {
+            if (checkpoint != null) transform.position = checkpoint.transform.position;
+            else transform.position = new Vector3(0, 35, 0);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.gameObject.CompareTag("Player")) 
@@ -65,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
                 if (values) Bounce(values.launchSpeed, values.maintainVelocityPercent);
             }
+            else if (collision.gameObject.CompareTag("Checkpoint")) checkpoint = collision.gameObject;
         }
     }
 
