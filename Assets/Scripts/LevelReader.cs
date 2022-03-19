@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class LevelReader : MonoBehaviour
 {
-    [SerializeField] private GameObject umbrellaPrefab, crabPrefab, checkpointPrefab;
+    [SerializeField] private GameObject umbrellaPrefab, crabPrefab, megaCrabPrefab, checkpointPrefab;
     [SerializeField] private Texture2D level;
     [SerializeField] Tile[] tileList;
 
@@ -53,8 +53,14 @@ public class LevelReader : MonoBehaviour
                 }
                 else if (tempColor == new Color(1, 127f/255f, 0))
                 {
-                    GameObject tempCrab = Instantiate(crabPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
+                    Color crabbish = new Color(1, 127f / 255f, 0);
+                    GameObject tempCrab;
+
+                    if(level.GetPixel(i+1, j+1) == crabbish && level.GetPixel(i, j + 1) == crabbish && level.GetPixel(i + 1, j) == crabbish) tempCrab = Instantiate(megaCrabPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
+                    else tempCrab = Instantiate(crabPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
                     crabs.Add(tempCrab);
+
+
                 }
 
             }

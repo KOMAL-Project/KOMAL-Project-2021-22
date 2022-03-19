@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   umbrellaPrefab: {fileID: 6645661703813261226, guid: cb701b4422d02a040afa772c928af9a0, type: 3}
   crabPrefab: {fileID: 6600809791149068721, guid: 35fe80952e728e94b919f710e94ce981, type: 3}
+  megaCrabPrefab: {fileID: 6600809791149068721, guid: 787ca2558905d9e419f54bf4d219886a, type: 3}
   checkpointPrefab: {fileID: 1809416668608642024, guid: 91d9658900f0874409bea73a6b3361ee, type: 3}
   level: {fileID: 2800000, guid: e0b17602901f48c4ea75aaa01d1ce85f, type: 3}
   tileList:
