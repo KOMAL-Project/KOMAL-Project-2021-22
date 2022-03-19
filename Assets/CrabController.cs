@@ -32,10 +32,10 @@ public class CrabController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collsion)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (collsion.transform.position.y > transform.position.y - .025f)
+        if (!collision.gameObject.CompareTag("Player"))
         {
             rb.velocity = rb.velocity.x < 0 ? new Vector2(speed, rb.velocity.y) : new Vector2(speed * -1, rb.velocity.y); // If the crab runs into a wall, change directions.
         }
@@ -46,7 +46,7 @@ public class CrabController : MonoBehaviour
         if (collision.transform.position.y < transform.position.y - .025f && collision.gameObject.CompareTag("Ground"))
         {
             //Debug.Log("Exit wall");
-            rb.velocity = rb.velocity.x < 0 ? new Vector2(speed, rb.velocity.y) : new Vector2(speed * -1, rb.velocity.y); // If the crab is close to a ledge, change directions.
+            //rb.velocity = rb.velocity.x < 0 ? new Vector2(speed, rb.velocity.y) : new Vector2(speed * -1, rb.velocity.y); // If the crab is close to a ledge, change directions.
         }
     }
 
