@@ -43,7 +43,7 @@ public class LevelReader : MonoBehaviour
                 {
                     //tiles.SetTile(new Vector3Int(i, j, 0), tileList[4]);
 
-                    GameObject tempUmbrella = Instantiate(umbrellaPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
+                    GameObject tempUmbrella = Instantiate(umbrellaPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j+1, 0)), Quaternion.identity);
                     umbrellas.Add(tempUmbrella);
                 }
                 else if(tempColor == Color.red)

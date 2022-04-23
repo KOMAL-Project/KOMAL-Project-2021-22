@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpCancelChangeCoeff; // positive vertical speed loss coefficient (0 to 1) that applies when jump is released prematurely 
     [SerializeField] private float minTimeBetweenJumps = 0.25f;
     private GameObject checkpoint; // the transform of this object is where the player respawns.
+    private Animator anim;
+
+    private int score = 0;
 
     private Rigidbody2D rb;
 
@@ -24,21 +27,53 @@ public class PlayerController : MonoBehaviour
     {
         inputManager = InputManagerObj.GetComponent<ManageInputs>();
 
+<<<<<<< HEAD
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, 0);
+=======
+        cam = Camera.main;
+
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(0, 0);
+        
+
+>>>>>>> origin/level-one-art
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        rb.velocity += new Vector2(speed * inputManager.GetJoystick().x, 0) * Time.deltaTime;
-        rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
         
 
+<<<<<<< HEAD
+=======
+        //cam.gameObject.transform.position = transform.position + new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10);
+        cam.gameObject.GetComponent<Rigidbody>().velocity = 2*(transform.position - cam.gameObject.transform.position + 2 *new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10));
+
+        // Handle Animations
+        anim.SetFloat("X Speed", Mathf.Abs(rb.velocity.x));
+        anim.SetFloat("Y Speed", rb.velocity.y);
+        if(Mathf.Abs(rb.velocity.x) > 0.05f) transform.localScale = rb.velocity.x > 0 ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
+>>>>>>> origin/level-one-art
 
         //Debug.Log(rb.velocity);
+        
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity += new Vector2(speed * inputManager.GetJoystick().x, 0) * Time.deltaTime;
+        rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
+
         JumpHandler();
+
+    }
+
+    public void collectCoin()
+    {
+        score++;
     }
 
     void Jump()
@@ -71,7 +106,12 @@ public class PlayerController : MonoBehaviour
 
                 if (values) Bounce(values.launchSpeed, values.maintainVelocityPercent);
             }
-            else if (collision.gameObject.CompareTag("Checkpoint")) checkpoint = collision.gameObject;
+            else if (collision.gameObject.CompareTag("Checkpoint"))
+            {
+                if(checkpoint != null) checkpoint.GetComponent<Animator>().SetBool("Lit", false);
+                checkpoint = collision.gameObject;
+                checkpoint.GetComponent<Animator>().SetBool("Lit", true);
+            }
         }
     }
 
