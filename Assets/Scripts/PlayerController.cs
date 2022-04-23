@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private GameObject checkpoint; // the transform of this object is where the player respawns.
     private Animator anim;
 
+    private int score = 0;
+
     private Camera cam;
     private Rigidbody2D rb;
 
@@ -39,10 +41,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        rb.velocity += new Vector2(speed * inputManager.GetJoystick().x, 0) * Time.deltaTime;
-        rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
         
-
 
         //cam.gameObject.transform.position = transform.position + new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10);
         cam.gameObject.GetComponent<Rigidbody>().velocity = 2*(transform.position - cam.gameObject.transform.position + 2 *new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10));
@@ -53,7 +52,21 @@ public class PlayerController : MonoBehaviour
         if(Mathf.Abs(rb.velocity.x) > 0.05f) transform.localScale = rb.velocity.x > 0 ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
 
         //Debug.Log(rb.velocity);
+        
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity += new Vector2(speed * inputManager.GetJoystick().x, 0) * Time.deltaTime;
+        rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
+
         JumpHandler();
+
+    }
+
+    public void collectCoin()
+    {
+        score++;
     }
 
     void Jump()
