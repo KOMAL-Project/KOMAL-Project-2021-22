@@ -691,6 +691,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -779,6 +780,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a379e8c3666b8f4d8c933f65f6de546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2011795521}
+  inputManager: {fileID: 994294241}
+  tileMap: {fileID: 352276157}
+  startZoom: 8
+  stopZoom: 16
+  minZoom: 6
+  maxZoom: 10
+  zoomSpeed: 10
 --- !u!1 &786270577
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,9 +967,6 @@ MonoBehaviour:
   joystick: {fileID: 1245172542}
   jumpButton: {fileID: 411113289}
   nub: {fileID: 850449126}
-  justReleased: 0
-  justPressed: 0
-  pressedDown: 0
   deadzone: 0
 --- !u!114 &994294242
 MonoBehaviour:
@@ -1079,7 +1097,49 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &1474610126
+--- !u!114 &2011795522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011795521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e80d776d059654fa450055c873ed68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputManagerObj: {fileID: 994294239}
+  speed: 2000
+  jump: 22.5
+  maxSpeedX: 10
+  maxFalling: -20
+  coyoteTime: 0.15
+  jumpInputStorage: 0.1
+  jumpCancelChangeCoeff: 0.5
+  minTimeBetweenJumps: 0.25
+--- !u!50 &2011795523
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011795521}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 4
+  m_Material: {fileID: 6200000, guid: 280d8764538cf374db1f245bd88306ca, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!61 &2011795524
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
