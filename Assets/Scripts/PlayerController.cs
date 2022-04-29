@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         inputManager = InputManagerObj.GetComponent<ManageInputs>();
 
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, 0);
     }
@@ -34,6 +35,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Handle Animations
+        anim.SetFloat("X Speed", Mathf.Abs(rb.velocity.x));
+        anim.SetFloat("Y Speed", rb.velocity.y);
+        if(Mathf.Abs(rb.velocity.x) > 0.05f) transform.localScale = rb.velocity.x > 0 ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity += new Vector2(speed * inputManager.GetJoystick().x, 0) * Time.deltaTime;
+        rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
 
         // Handle Animations
         anim.SetFloat("X Speed", Mathf.Abs(rb.velocity.x));
@@ -41,13 +52,6 @@ public class PlayerController : MonoBehaviour
         if(Mathf.Abs(rb.velocity.x) > 0.05f) transform.localScale = rb.velocity.x > 0 ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
 
         //Debug.Log(rb.velocity);
-        
-    }
-
-    private void FixedUpdate()
-    {
-        rb.velocity += new Vector2(speed * inputManager.GetJoystick().x, 0) * Time.deltaTime;
-        rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
 
         JumpHandler();
 
