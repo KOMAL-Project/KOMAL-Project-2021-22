@@ -16,8 +16,6 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     private int score = 0;
-
-    private Camera cam;
     private Rigidbody2D rb;
 
     private float timeSinceLand, timeSinceJumpPress, timeSinceJump; 
@@ -28,8 +26,6 @@ public class PlayerController : MonoBehaviour
     {
         inputManager = InputManagerObj.GetComponent<ManageInputs>();
 
-        cam = Camera.main;
-
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, 0);
@@ -38,21 +34,12 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
-
-        
-
-        //cam.gameObject.transform.position = transform.position + new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10);
-        cam.gameObject.GetComponent<Rigidbody>().velocity = 2*(transform.position - cam.gameObject.transform.position + 2 *new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10));
-
         // Handle Animations
         anim.SetFloat("X Speed", Mathf.Abs(rb.velocity.x));
         anim.SetFloat("Y Speed", rb.velocity.y);
         if(Mathf.Abs(rb.velocity.x) > 0.05f) transform.localScale = rb.velocity.x > 0 ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
-
-        //Debug.Log(rb.velocity);
-        
     }
 
     private void FixedUpdate()
@@ -61,7 +48,6 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
 
         JumpHandler();
-
     }
 
     public void collectCoin()
