@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private int score = 0;
 
+    private Camera cam;
     private Rigidbody2D rb;
 
     private float timeSinceLand, timeSinceJumpPress, timeSinceJump; 
@@ -27,10 +28,6 @@ public class PlayerController : MonoBehaviour
     {
         inputManager = InputManagerObj.GetComponent<ManageInputs>();
 
-<<<<<<< HEAD
-        rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(0, 0);
-=======
         cam = Camera.main;
 
         anim = GetComponent<Animator>();
@@ -38,7 +35,6 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
         
 
->>>>>>> origin/level-one-art
     }
 
     // Update is called once per frame
@@ -47,8 +43,6 @@ public class PlayerController : MonoBehaviour
 
         
 
-<<<<<<< HEAD
-=======
         //cam.gameObject.transform.position = transform.position + new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10);
         cam.gameObject.GetComponent<Rigidbody>().velocity = 2*(transform.position - cam.gameObject.transform.position + 2 *new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10));
 
@@ -56,7 +50,6 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("X Speed", Mathf.Abs(rb.velocity.x));
         anim.SetFloat("Y Speed", rb.velocity.y);
         if(Mathf.Abs(rb.velocity.x) > 0.05f) transform.localScale = rb.velocity.x > 0 ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
->>>>>>> origin/level-one-art
 
         //Debug.Log(rb.velocity);
         
@@ -131,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     void JumpHandler()
     {
-        if (inputManager.isJumpDown()) timeSinceJumpPress = 0;
+        if (inputManager.pressedDown) timeSinceJumpPress = 0;
 
         if (!grounded) timeSinceLand += Time.deltaTime;
         else timeSinceLand = 0;
@@ -145,7 +138,7 @@ public class PlayerController : MonoBehaviour
         timeSinceJumpPress += Time.deltaTime;
         timeSinceJump += Time.deltaTime;
 
-        if (inputManager.wasJumpReleased())
+        if (inputManager.justReleased)
         {
             Debug.Log("TEST");
             if (rb.velocity.y > 0 && timeSinceJumpPress < coyoteTime) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpCancelChangeCoeff);
@@ -156,6 +149,7 @@ public class PlayerController : MonoBehaviour
 
     public void EndJump()
     {
+        //Debug.Log("TEST");
         if (rb.velocity.y > 0 && timeSinceJumpPress < coyoteTime) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpCancelChangeCoeff);
 
         timeSinceJumpPress = coyoteTime;
