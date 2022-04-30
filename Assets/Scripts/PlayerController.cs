@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpCancelChangeCoeff; // positive vertical speed loss coefficient (0 to 1) that applies when jump is released prematurely 
     [SerializeField] private float minTimeBetweenJumps = 0.25f;
     private GameObject checkpoint; // the transform of this object is where the player respawns.
-    private Animator anim;
 
     private Rigidbody2D rb;
 
@@ -25,7 +24,6 @@ public class PlayerController : MonoBehaviour
     {
         inputManager = InputManagerObj.GetComponent<ManageInputs>();
 
-        anim = GetComponent<Animator>();
 
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, 0);
@@ -35,8 +33,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Handle Animations
-        anim.SetFloat("X Speed", Mathf.Abs(rb.velocity.x));
-        anim.SetFloat("Y Speed", rb.velocity.y);
         if(Mathf.Abs(rb.velocity.x) > 0.05f) transform.localScale = rb.velocity.x > 0 ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
     }
 
@@ -46,8 +42,6 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
 
         // Handle Animations
-        anim.SetFloat("X Speed", Mathf.Abs(rb.velocity.x));
-        anim.SetFloat("Y Speed", rb.velocity.y);
         if(Mathf.Abs(rb.velocity.x) > 0.05f) transform.localScale = rb.velocity.x > 0 ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
 
         //Debug.Log(rb.velocity);
