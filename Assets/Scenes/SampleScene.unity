@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputManagerObj: {fileID: 994294239}
-  speed: 2000
+  speed: 50
   jump: 22.5
   maxSpeedX: 10
   maxFalling: -20
