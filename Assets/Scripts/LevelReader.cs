@@ -8,6 +8,7 @@ public class LevelReader : MonoBehaviour
     [SerializeField] private GameObject umbrellaPrefab, crabPrefab, megaCrabPrefab, checkpointPrefab;
     [SerializeField] private Texture2D level;
     [SerializeField] Tile[] tileList;
+    [SerializeField] TileBase ruleTile;
 
     public Tilemap tiles;
     public List<GameObject> umbrellas = new List<GameObject>();
@@ -34,10 +35,12 @@ public class LevelReader : MonoBehaviour
 
                 if (tempColor == Color.black)
                 {
-                    if (i % 2 == 0 && j % 2 == 0) tiles.SetTile(new Vector3Int(i, j, 0), tileList[0]);
+                    /*if (i % 2 == 0 && j % 2 == 0) tiles.SetTile(new Vector3Int(i, j, 0), tileList[0]);
                     else if (i % 2 == 1 && j % 2 == 0) tiles.SetTile(new Vector3Int(i, j, 0), tileList[1]);
                     else if (i % 2 == 0 && j % 2 == 1) tiles.SetTile(new Vector3Int(i, j, 0), tileList[2]);
-                    else tiles.SetTile(new Vector3Int(i, j, 0), tileList[3]);
+                    else tiles.SetTile(new Vector3Int(i, j, 0), tileList[3]);*/
+
+                    tiles.SetTile(new Vector3Int(i, j, 0), ruleTile);
                 }
                 else if (tempColor == Color.cyan && umbrellaPrefab) 
                 {
