@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
     private GameObject checkpoint; // the transform of this object is where the player respawns.
     private Animator anim;
 
-    private int score = 0;
-
     private Rigidbody2D rb;
 
     private float timeSinceLand, timeSinceJumpPress, timeSinceJump; 
@@ -28,6 +26,7 @@ public class PlayerController : MonoBehaviour
         inputManager = InputManagerObj.GetComponent<ManageInputs>();
 
         anim = GetComponent<Animator>();
+
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, 0);
     }
@@ -54,12 +53,6 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(rb.velocity);
 
         JumpHandler();
-
-    }
-
-    public void collectCoin()
-    {
-        score++;
     }
 
     void Jump()
@@ -92,12 +85,7 @@ public class PlayerController : MonoBehaviour
 
                 if (values) Bounce(values.launchSpeed, values.maintainVelocityPercent);
             }
-            else if (collision.gameObject.CompareTag("Checkpoint"))
-            {
-                if(checkpoint != null) checkpoint.GetComponent<Animator>().SetBool("Lit", false);
-                checkpoint = collision.gameObject;
-                checkpoint.GetComponent<Animator>().SetBool("Lit", true);
-            }
+            else if (collision.gameObject.CompareTag("Checkpoint")) checkpoint = collision.gameObject;
         }
     }
 
