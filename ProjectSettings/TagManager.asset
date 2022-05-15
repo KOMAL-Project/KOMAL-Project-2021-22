@@ -8,6 +8,7 @@ TagManager:
   - BounceObject
   - Killing
   - Checkpoint
+  - Objective
   layers:
   - Default
   - TransparentFX
