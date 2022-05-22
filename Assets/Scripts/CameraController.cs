@@ -22,6 +22,9 @@ public class CameraController : MonoBehaviour
     [Tooltip("The speed at which the camera Lerps toward its target zoom value.")]
     [SerializeField] private float zoomSpeed;
 
+    [Tooltip("The speed at which the camera will move towards the target")]
+    [SerializeField] private float cameraMoveScale;
+
     private float targetZoom;
     private CompositeCollider2D groundCollider;
     private Camera cam;
@@ -39,7 +42,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         // TODO: Seems like a Lerp would do better here
-        rb.velocity = 2 * (player.transform.position - transform.position + 2 * new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10));
+        rb.velocity = cameraMoveScale * (player.transform.position - transform.position + 2 * new Vector3(inputManager.GetJoystick().x, inputManager.GetJoystick().y, -10));
 
         float groundDistance = Vector3.Distance(groundCollider.ClosestPoint(player.transform.position), player.transform.position);
 
