@@ -5,9 +5,21 @@ using UnityEngine.Tilemaps;
 
 public class LevelReader : MonoBehaviour
 {
+<<<<<<< HEAD
     [SerializeField] private GameObject umbrellaPrefab, crabPrefab, megaCrabPrefab, checkpointPrefab, goalPrefab;
+=======
+    private enum GroundType {
+        TEST,
+        GRASS,
+        SAND,
+    }
+
+    [SerializeField] private GameObject umbrellaPrefab, crabPrefab, megaCrabPrefab, checkpointPrefab;
+>>>>>>> dca4c8c256df1152404327057830f3281367e98e
     [SerializeField] private Texture2D level;
     [SerializeField] Tile[] tileList;
+    [SerializeField] TileBase[] ruleTiles;
+    [SerializeField] private GroundType groundType;
 
     public Tilemap tiles;
     public List<GameObject> umbrellas = new List<GameObject>();
@@ -34,10 +46,23 @@ public class LevelReader : MonoBehaviour
 
                 if (tempColor == Color.black)
                 {
-                    if (i % 2 == 0 && j % 2 == 0) tiles.SetTile(new Vector3Int(i, j, 0), tileList[0]);
+                    /*if (i % 2 == 0 && j % 2 == 0) tiles.SetTile(new Vector3Int(i, j, 0), tileList[0]);
                     else if (i % 2 == 1 && j % 2 == 0) tiles.SetTile(new Vector3Int(i, j, 0), tileList[1]);
                     else if (i % 2 == 0 && j % 2 == 1) tiles.SetTile(new Vector3Int(i, j, 0), tileList[2]);
-                    else tiles.SetTile(new Vector3Int(i, j, 0), tileList[3]);
+                    else tiles.SetTile(new Vector3Int(i, j, 0), tileList[3]);*/
+
+                    if (groundType == GroundType.TEST)
+                    { //TEST
+                        tiles.SetTile(new Vector3Int(i, j, 0), ruleTiles[0]);
+                    }
+                    else if (groundType == GroundType.GRASS)
+                    { //GRASS
+                        tiles.SetTile(new Vector3Int(i, j, 0), ruleTiles[1]);
+                    }
+                    else 
+                    { //SAND
+                        tiles.SetTile(new Vector3Int(i, j, 0), ruleTiles[2]);
+                    }
                 }
                 else if (tempColor == Color.cyan && umbrellaPrefab) 
                 {

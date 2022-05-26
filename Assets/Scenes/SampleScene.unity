@@ -156,15 +156,20 @@ MonoBehaviour:
   crabPrefab: {fileID: 6600809791149068721, guid: 35fe80952e728e94b919f710e94ce981, type: 3}
   megaCrabPrefab: {fileID: 6600809791149068721, guid: 787ca2558905d9e419f54bf4d219886a, type: 3}
   checkpointPrefab: {fileID: 1809416668608642024, guid: 91d9658900f0874409bea73a6b3361ee, type: 3}
-  goalPrefab: {fileID: 8115700175323481127, guid: 664c29d4a28f17d42b582d1352cfea19, type: 3}
-  level: {fileID: 2800000, guid: e0b17602901f48c4ea75aaa01d1ce85f, type: 3}
+  level: {fileID: 2800000, guid: 0a222ae9486345b4699a1000f84734a9, type: 3}
   tileList:
   - {fileID: 11400000, guid: 9b13258f08e23794fb064fac3222124e, type: 2}
   - {fileID: 11400000, guid: 13f3c5caefef86e49a8627d59ec11ef0, type: 2}
   - {fileID: 11400000, guid: f9abfc434deca3d439ea3a676e235e12, type: 2}
   - {fileID: 11400000, guid: 847bbb41e8efd7f408a31eb62e5cc697, type: 2}
   - {fileID: 11400000, guid: 00747eee9178afb409fc94d851537c0a, type: 2}
-  tiles: {fileID: 0}
+  - {fileID: 11400000, guid: 00747eee9178afb409fc94d851537c0a, type: 2}
+  ruleTiles:
+  - {fileID: 11400000, guid: 72d195c3444b035498ec26860c77844f, type: 2}
+  - {fileID: 11400000, guid: 82c10dadfba0bf049a268e76b264c950, type: 2}
+  - {fileID: 11400000, guid: 79345300cf68c69428be055c87895852, type: 2}
+  groundType: 2
+  tiles: {fileID: 352276160}
   umbrellas: []
   crabs: []
   checkpoints: []
@@ -295,29 +300,59 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
-      e00: 0
-      e01: -8.179897e+21
-      e02: -8.1794016e+21
-      e03: -8.1794016e+21
-      e10: 0
-      e11: 2.75e-43
-      e12: 2.75e-43
-      e13: 2.75e-43
-      e20: -489669120
-      e21: -2.534206e-29
-      e22: -3.6500797
-      e23: -2.534206e-29
+      e00: 2.5244127e-29
+      e01: 1.2394492e+36
+      e02: 1.23937946e+36
+      e03: 1.23937946e+36
+      e10: 7.96e-43
+      e11: 1.25e-43
+      e12: 1.25e-43
+      e13: 1.25e-43
+      e20: 2.3916252e+30
+      e21: -2.6568204e-29
+      e22: -0.000000010734375
+      e23: -2.6568204e-29
       e30: 4.5904e-41
-      e31: 7.16e-43
-      e32: 7.13e-43
-      e33: 7.16e-43
+      e31: 7.97e-43
+      e32: 7.95e-43
+      e33: 7.97e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: -2.5339845e-29, g: -2.5339845e-29, b: -2.5339845e-29, a: -2.5339845e-29}
-  m_TileObjectToInstantiateArray: []
+    m_Data: {r: -2.6571333e-29, g: -2.6571333e-29, b: -2.6571333e-29, a: -2.6571333e-29}
+  m_TileObjectToInstantiateArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -66, y: -60, z: 0}
