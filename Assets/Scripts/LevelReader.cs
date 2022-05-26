@@ -5,10 +5,17 @@ using UnityEngine.Tilemaps;
 
 public class LevelReader : MonoBehaviour
 {
+    private enum GroundType {
+        TEST,
+        GRASS,
+        SAND,
+    }
+
     [SerializeField] private GameObject umbrellaPrefab, crabPrefab, megaCrabPrefab, checkpointPrefab;
     [SerializeField] private Texture2D level;
     [SerializeField] Tile[] tileList;
-    [SerializeField] TileBase ruleTile;
+    [SerializeField] TileBase[] ruleTiles;
+    [SerializeField] private GroundType groundType;
 
     public Tilemap tiles;
     public List<GameObject> umbrellas = new List<GameObject>();
@@ -40,7 +47,18 @@ public class LevelReader : MonoBehaviour
                     else if (i % 2 == 0 && j % 2 == 1) tiles.SetTile(new Vector3Int(i, j, 0), tileList[2]);
                     else tiles.SetTile(new Vector3Int(i, j, 0), tileList[3]);*/
 
-                    tiles.SetTile(new Vector3Int(i, j, 0), ruleTile);
+                    if (groundType == GroundType.TEST)
+                    { //TEST
+                        tiles.SetTile(new Vector3Int(i, j, 0), ruleTiles[0]);
+                    }
+                    else if (groundType == GroundType.GRASS)
+                    { //GRASS
+                        tiles.SetTile(new Vector3Int(i, j, 0), ruleTiles[1]);
+                    }
+                    else 
+                    { //SAND
+                        tiles.SetTile(new Vector3Int(i, j, 0), ruleTiles[2]);
+                    }
                 }
                 else if (tempColor == Color.cyan && umbrellaPrefab) 
                 {
