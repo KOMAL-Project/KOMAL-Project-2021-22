@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class LevelReader : MonoBehaviour
 {
-    [SerializeField] private GameObject umbrellaPrefab, crabPrefab, megaCrabPrefab, checkpointPrefab;
+    [SerializeField] private GameObject umbrellaPrefab, crabPrefab, megaCrabPrefab, checkpointPrefab, goalPrefab;
     [SerializeField] private Texture2D level;
     [SerializeField] Tile[] tileList;
 
@@ -13,7 +13,7 @@ public class LevelReader : MonoBehaviour
     public List<GameObject> umbrellas = new List<GameObject>();
     public List<GameObject> crabs = new List<GameObject>();
     public List<GameObject> checkpoints = new List<GameObject>();
-
+    public GameObject goal;
 
     public GameObject tileMapObj;
 
@@ -63,6 +63,12 @@ public class LevelReader : MonoBehaviour
                     GameObject tempCrab;
                     if (level.GetPixel(i + 1, j + 1) == megaCrabbish && level.GetPixel(i, j + 1) == megaCrabbish && level.GetPixel(i + 1, j) == megaCrabbish) tempCrab = Instantiate(megaCrabPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
                 
+                }
+
+                else if (tempColor == Color.green)
+                {
+                    GameObject tempGoal = Instantiate(goalPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)) + new Vector3(.5f, .5f, 0), Quaternion.identity);
+                    goal = tempGoal;
                 }
 
             }
