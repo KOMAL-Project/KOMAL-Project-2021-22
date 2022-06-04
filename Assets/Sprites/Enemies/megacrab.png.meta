@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 9c9e34fff7919d4439aab50da48befa2
+guid: be12e646bc42c2e4882f382401bd3f22
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8781757214100938709
-    second: crab_0
+      213: 4080851927140705042
+    second: megacrab_0
   - first:
-      213: 3113750711623011716
-    second: crab_1
+      213: -8231619191331813279
+    second: megacrab_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,13 +133,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crab_0
+      name: megacrab_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b202acd675ee02680800000000000000
-      internalID: -8781757214100938709
+      spriteID: 213a03ad43912a830800000000000000
+      internalID: 4080851927140705042
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crab_1
+      name: megacrab_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,8 +168,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48dc86d56c3463b20800000000000000
-      internalID: 3113750711623011716
+      spriteID: 168016e55f963cd80800000000000000
+      internalID: -8231619191331813279
       vertices: []
       indices: 
       edges: []

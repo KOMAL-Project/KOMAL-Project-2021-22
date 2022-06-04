@@ -34,7 +34,7 @@ public class CrabController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        //Debug.Log(collision);
         if (!collision.gameObject.CompareTag("Player"))
         {
             rb.velocity = rb.velocity.x < 0 ? new Vector2(speed, rb.velocity.y) : new Vector2(speed * -1, rb.velocity.y); // If the crab runs into a wall, change directions.

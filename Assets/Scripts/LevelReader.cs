@@ -5,17 +5,17 @@ using UnityEngine.Tilemaps;
 
 public class LevelReader : MonoBehaviour
 {
-<<<<<<< HEAD
-    [SerializeField] private GameObject umbrellaPrefab, crabPrefab, megaCrabPrefab, checkpointPrefab, goalPrefab;
-=======
+
+    [SerializeField] private GameObject umbrellaPrefab, crabPrefab, megaCrabPrefab, checkpointPrefab, goalPrefab, collectPrefab;
+
     private enum GroundType {
         TEST,
         GRASS,
         SAND,
     }
 
-    [SerializeField] private GameObject umbrellaPrefab, crabPrefab, megaCrabPrefab, checkpointPrefab;
->>>>>>> dca4c8c256df1152404327057830f3281367e98e
+    
+
     [SerializeField] private Texture2D level;
     [SerializeField] Tile[] tileList;
     [SerializeField] TileBase[] ruleTiles;
@@ -89,7 +89,11 @@ public class LevelReader : MonoBehaviour
                     if (level.GetPixel(i + 1, j + 1) == megaCrabbish && level.GetPixel(i, j + 1) == megaCrabbish && level.GetPixel(i + 1, j) == megaCrabbish) tempCrab = Instantiate(megaCrabPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
                 
                 }
-
+                else if (tempColor == new Color(1,1,0))
+                {
+                    GameObject tempCollect = Instantiate(collectPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)) + new Vector3(0, .5f, 0), Quaternion.identity);
+                    
+                }
                 else if (tempColor == Color.green)
                 {
                     GameObject tempGoal = Instantiate(goalPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)) + new Vector3(.5f, .5f, 0), Quaternion.identity);

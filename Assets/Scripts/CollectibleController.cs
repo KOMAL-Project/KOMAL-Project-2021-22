@@ -10,13 +10,21 @@ public class CollectibleController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+
+            
+
+            GetComponent<Animator>().SetTrigger("Collect");
+
             if (this.gameObject.CompareTag("Objective"))
             {
                 levelEndController.GetComponent<CanvasController>().LevelEnd();
+                Destroy(gameObject);
             }
             else collision.gameObject.GetComponent<PlayerController>().collectCoin();
+
+            GetComponent<BoxCollider2D>().enabled = false;
             
-            Destroy(gameObject);
+            
         }
     }
 }

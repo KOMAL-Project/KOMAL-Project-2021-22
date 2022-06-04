@@ -6,7 +6,9 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] GameObject InputManagerObj;
-    private ManageInputs inputManager;  
+    [SerializeField] GameObject CanvasControllerObj;
+    private ManageInputs inputManager;
+    private CanvasController cv;
     [SerializeField] float speed, jump, maxSpeedX, maxFalling;
     [SerializeField] float coyoteTime; // how late can I press jump after falling and still jump
     [SerializeField] private float jumpInputStorage; // how early can the jump button be pressed before hitting ground
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         inputManager = InputManagerObj.GetComponent<ManageInputs>();
+        cv = CanvasControllerObj.GetComponent<CanvasController>();
+        cv.SetScore(score);
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -53,7 +57,9 @@ public class PlayerController : MonoBehaviour
 
     public void collectCoin()
     {
+        GetComponentsInChildren<AudioSource>()[6].Play(); // Collect SFX
         score++;
+        cv.SetScore(score);
     }
 
     void Jump()
