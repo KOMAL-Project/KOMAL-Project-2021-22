@@ -145,6 +145,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
+
     public void EndJump()
     {
         //Debug.Log("TEST");

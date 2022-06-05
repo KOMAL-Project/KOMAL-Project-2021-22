@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6957512998627168302, guid: b89673a6dfb462c4cbe14a781d0dc4bd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8487cd16681a6d54aafa8d2206fa5a60, type: 2}
     - target: {fileID: 8602364178060503407, guid: b89673a6dfb462c4cbe14a781d0dc4bd, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -139,12 +143,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 994294241}
     - target: {fileID: 8602364178060503407, guid: b89673a6dfb462c4cbe14a781d0dc4bd, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 613372750}
+    - target: {fileID: 8602364178060503407, guid: b89673a6dfb462c4cbe14a781d0dc4bd, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: JumpPress
       objectReference: {fileID: 0}
     - target: {fileID: 8602364178060503407, guid: b89673a6dfb462c4cbe14a781d0dc4bd, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: jumpRelease
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602364178060503407, guid: b89673a6dfb462c4cbe14a781d0dc4bd, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EndJump
       objectReference: {fileID: 0}
     - target: {fileID: 8602364178150165668, guid: b89673a6dfb462c4cbe14a781d0dc4bd, type: 3}
       propertyPath: m_Name
@@ -694,6 +706,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7979730084295169045, guid: b39c2d5afa50b0f4e924a5648629a52b, type: 3}
   m_PrefabInstance: {fileID: 7979730084498031700}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &613372750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7979730084295169046, guid: b39c2d5afa50b0f4e924a5648629a52b, type: 3}
+  m_PrefabInstance: {fileID: 7979730084498031700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613372744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e80d776d059654fa450055c873ed68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &786270577
 GameObject:
   m_ObjectHideFlags: 0

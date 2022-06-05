@@ -86,7 +86,7 @@ public class LevelReader : MonoBehaviour
                 {
                     Color megaCrabbish = new Color(222f / 255f, 107f / 255f, 0);
                     GameObject tempCrab;
-                    if (level.GetPixel(i + 1, j + 1) == megaCrabbish && level.GetPixel(i, j + 1) == megaCrabbish && level.GetPixel(i + 1, j) == megaCrabbish) tempCrab = Instantiate(megaCrabPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
+                    if (level.GetPixel(i + 1, j + 1) == megaCrabbish && level.GetPixel(i, j + 1) == megaCrabbish && level.GetPixel(i + 1, j) == megaCrabbish) tempCrab = Instantiate(megaCrabPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)) + new Vector3(0, 1, 0), Quaternion.identity);
                 
                 }
                 else if (tempColor == new Color(1,1,0))
