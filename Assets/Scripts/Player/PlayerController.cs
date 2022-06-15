@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject InputManagerObj;
     [SerializeField] GameObject CanvasControllerObj;
     private ManageInputs inputManager;
-    private CanvasController cv;
+    public CanvasController cv;
     [SerializeField] float speed, jump, maxSpeedX, maxFalling;
     [SerializeField] float coyoteTime; // how late can I press jump after falling and still jump
     [SerializeField] private float jumpInputStorage; // how early can the jump button be pressed before hitting ground
@@ -18,11 +18,13 @@ public class PlayerController : MonoBehaviour
     private GameObject checkpoint; // the transform of this object is where the player respawns.
     private Animator anim;
 
+    private bool playing = true; // Whether or not the player is in a cutscene state. When true player will not be controllable and will not interact with objects, but still have physics.
+
     private int score = 0;
     private Rigidbody2D rb;
 
-    private float timeSinceLand, timeSinceJumpPress, timeSinceJump; 
-    private bool grounded;
+    [SerializeField] private float timeSinceLand, timeSinceJumpPress, timeSinceJump; 
+    [SerializeField] private bool grounded;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, 0);
         
-
+         
     }
 
     // Update is called once per frame
@@ -49,10 +51,13 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity += new Vector2(speed * inputManager.GetJoystick().x, 0) * Time.deltaTime;
-        rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
+        if (playing)
+        {
+            rb.velocity += new Vector2(speed * inputManager.GetJoystick().x, 0) * Time.deltaTime;
+            rb.velocity = new Vector2(.75f * Mathf.Sign(rb.velocity.x) * Mathf.Min(maxSpeedX, Mathf.Abs(rb.velocity.x)), Mathf.Max(maxFalling, rb.velocity.y));
 
-        JumpHandler();
+            JumpHandler();
+        }
     }
 
     public void collectCoin()
@@ -71,18 +76,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Killing"))
+        if (collision.gameObject.CompareTag("Killing") && playing)
         {
+            playing = false;
+            anim.Play("Hurt");
+            float launchAngle = Random.Range(Mathf.PI/4, 3*Mathf.PI/4);
+            float launchMagnitude = Random.Range(20, 25);
+            rb.velocity = new Vector3(Mathf.Cos(launchAngle), Mathf.Sin(launchAngle), 0) * launchMagnitude;
+
             GetComponentsInChildren<AudioSource>()[3].Play(); // Hurt SFX
             Handheld.Vibrate();
-            if (checkpoint != null) transform.position = checkpoint.transform.position;
-            else transform.position = new Vector3(0, 35, 0);
+            StartCoroutine(Respawn());
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player")) 
+        if (!collision.gameObject.CompareTag("Player") && playing) 
         {
             if (collision.gameObject.CompareTag("Ground"))
             {
@@ -106,9 +116,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSecondsRealtime(.5f);
+        if (checkpoint != null) transform.position = checkpoint.transform.position;
+        else transform.position = new Vector3(0, 35, 0);
+        playing = true;
+        rb.velocity = Vector3.zero;
+
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") && !collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Ground") && !collision.gameObject.CompareTag("Player") && playing)
         {
             grounded = true;
             //Debug.Log(collision.gameObject.tag);

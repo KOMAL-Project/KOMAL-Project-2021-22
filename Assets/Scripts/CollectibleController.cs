@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollectibleController : MonoBehaviour
 {
-    [SerializeField] GameObject levelEndController;
+    
 
     private bool collected = false;
 
@@ -16,7 +16,7 @@ public class CollectibleController : MonoBehaviour
 
             if (this.gameObject.CompareTag("Objective"))
             {
-                levelEndController.GetComponent<CanvasController>().LevelEnd();
+                collision.gameObject.GetComponent<PlayerController>().cv.LevelEnd();
                 Destroy(gameObject);
             }
             else if(!collected) collision.gameObject.GetComponent<PlayerController>().collectCoin();

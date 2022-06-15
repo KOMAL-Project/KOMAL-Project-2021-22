@@ -41,9 +41,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 11082b9a2331d3144b9500e52e2d56a9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 262219c960347864e93caf3b711a4181, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.488
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -53,7 +53,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: -0.075
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -117,7 +117,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.32
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -422,15 +422,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 16ea983f042e5da4ba10261c6d0f1e9b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9c8d01c5e03c694429ea01129272223a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.17
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 31
+  Priority: 167
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -549,9 +549,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d7d542cb1e1da0d4ebf6f3b6916a0d73, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8bdd2d65f5d6dac40a8f93447c73d48d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.544
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -676,7 +676,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3ab902473d3e225448822b7f1b278454, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3e9273e8ea483e34c96056dba1343cc8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -945,11 +945,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputManagerObj: {fileID: 0}
+  CanvasControllerObj: {fileID: 0}
   speed: 5000
   jump: 22.5
   maxSpeedX: 10
   maxFalling: -20
-  coyoteTime: 0.15
+  coyoteTime: 0.25
   jumpInputStorage: 0.1
   jumpCancelChangeCoeff: 0.5
   minTimeBetweenJumps: 0.25
@@ -958,6 +959,10 @@ MonoBehaviour:
   - {fileID: 4438693029840583644}
   - {fileID: 6583536413396889688}
   - {fileID: 2903608267535453895}
+  timeSinceLand: 0
+  timeSinceJumpPress: 0
+  timeSinceJump: 0
+  grounded: 0
 --- !u!212 &7979730084295169041
 SpriteRenderer:
   m_ObjectHideFlags: 0

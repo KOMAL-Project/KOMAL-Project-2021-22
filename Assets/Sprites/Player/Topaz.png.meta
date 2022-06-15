@@ -4,61 +4,64 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 152935856936865942
-    second: Idle
+    second: Topaz_0
   - first:
       213: -7143670118705432124
-    second: Map_1
+    second: Topaz_1
   - first:
       213: -7142261728007909184
     second: Topaz_2
   - first:
       213: -6534113162764214935
-    second: Falling_1
+    second: Topaz_3
   - first:
       213: -6448376708372558725
-    second: Walk_1
+    second: Topaz_4
   - first:
       213: 379679464793387021
-    second: Map_2
+    second: Topaz_5
   - first:
       213: -3051017431734255738
     second: Topaz_6
   - first:
       213: 2714080035678893643
-    second: Falling_2
+    second: Topaz_7
   - first:
       213: -2998806816979434308
-    second: Walk_2
+    second: Topaz_8
   - first:
       213: -8558257638481112625
-    second: Map_3
+    second: Topaz_9
   - first:
       213: 9198651331232578613
     second: Topaz_10
   - first:
       213: -4465172842660673249
-    second: Falling_3
+    second: Topaz_11
   - first:
       213: 585121170233772223
-    second: Walk_3
+    second: Topaz_12
   - first:
       213: 3665018705845633239
-    second: Map_4
+    second: Topaz_13
   - first:
       213: -1746128662056869950
-    second: Rising
+    second: Topaz_14
   - first:
       213: -1710894059295205013
-    second: Falling_4
+    second: Topaz_15
   - first:
       213: -7120988719545563562
-    second: Walk_4
+    second: Topaz_16
   - first:
       213: 8778700797895129104
-    second: Map_5
+    second: Topaz_17
   - first:
       213: -2736571368083647294
-    second: Walk_5
+    second: Topaz_18
+  - first:
+      213: 8740407302510205971
+    second: Topaz_19
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -184,7 +187,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle
+      name: Topaz_0
       rect:
         serializedVersion: 2
         x: 0
@@ -192,7 +195,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,7 +208,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_1
+      name: Topaz_1
       rect:
         serializedVersion: 2
         x: 16
@@ -213,7 +216,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,7 +229,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Falling_1
+      name: Topaz_3
       rect:
         serializedVersion: 2
         x: 48
@@ -234,7 +237,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -247,7 +250,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_1
+      name: Topaz_4
       rect:
         serializedVersion: 2
         x: 0
@@ -255,7 +258,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,7 +271,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_2
+      name: Topaz_5
       rect:
         serializedVersion: 2
         x: 16
@@ -276,7 +279,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -289,7 +292,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Falling_2
+      name: Topaz_7
       rect:
         serializedVersion: 2
         x: 48
@@ -297,7 +300,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,7 +313,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_2
+      name: Topaz_8
       rect:
         serializedVersion: 2
         x: 0
@@ -318,7 +321,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -331,7 +334,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_3
+      name: Topaz_9
       rect:
         serializedVersion: 2
         x: 16
@@ -339,7 +342,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -352,7 +355,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Falling_3
+      name: Topaz_11
       rect:
         serializedVersion: 2
         x: 48
@@ -360,7 +363,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -373,7 +376,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_3
+      name: Topaz_12
       rect:
         serializedVersion: 2
         x: 0
@@ -381,7 +384,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -394,7 +397,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_4
+      name: Topaz_13
       rect:
         serializedVersion: 2
         x: 16
@@ -402,7 +405,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -415,7 +418,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rising
+      name: Topaz_14
       rect:
         serializedVersion: 2
         x: 32
@@ -423,7 +426,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -436,7 +439,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Falling_4
+      name: Topaz_15
       rect:
         serializedVersion: 2
         x: 48
@@ -444,7 +447,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -457,7 +460,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_4
+      name: Topaz_16
       rect:
         serializedVersion: 2
         x: 0
@@ -465,7 +468,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -478,7 +481,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_5
+      name: Topaz_17
       rect:
         serializedVersion: 2
         x: 16
@@ -486,7 +489,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -499,7 +502,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_5
+      name: Topaz_18
       rect:
         serializedVersion: 2
         x: 0
@@ -507,7 +510,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -515,6 +518,90 @@ TextureImporter:
       bones: []
       spriteID: 2c49ed6f6deb50ad0800000000000000
       internalID: -2736571368083647294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Topaz_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c09839bcc691ec90800000000000000
+      internalID: -7142261728007909184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Topaz_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f74f19fcb98a5d0800000000000000
+      internalID: -3051017431734255738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Topaz_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53cbac236ac28af70800000000000000
+      internalID: 9198651331232578613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Topaz_19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31cd95a022a2c4970800000000000000
+      internalID: 8740407302510205971
       vertices: []
       indices: 
       edges: []
