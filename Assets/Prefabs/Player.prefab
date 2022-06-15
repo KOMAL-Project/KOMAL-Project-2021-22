@@ -41,7 +41,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 262219c960347864e93caf3b711a4181, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 11082b9a2331d3144b9500e52e2d56a9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.488
   m_Pitch: 1
@@ -946,6 +946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputManagerObj: {fileID: 0}
   CanvasControllerObj: {fileID: 0}
+  cv: {fileID: 0}
   speed: 5000
   jump: 22.5
   maxSpeedX: 10
@@ -1027,7 +1028,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.11180496}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1038,7 +1039,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.625, y: 1}
+  m_Size: {x: 0.625, y: 0.7763901}
   m_EdgeRadius: 0
 --- !u!50 &7979730084295169047
 Rigidbody2D:
