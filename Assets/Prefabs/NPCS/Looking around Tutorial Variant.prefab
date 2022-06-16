@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6378443995426762651
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 92466377284447076, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_Name
+      value: Looking around Tutorial Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447096, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447096, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.980305
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447096, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 62.468983
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447096, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447096, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447096, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447096, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447096, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447096, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447096, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447096, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 92466377284447097, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e830e8305816d0546af8a9022cec7c7b, type: 3}
+    - target: {fileID: 92466378464546071, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}
+      propertyPath: m_Text
+      value: "If you ever have issues\nseeing far below, move \nthe joystick downwards\nto
+        see more around you!\nYou can also move the \nstick up to look up too."
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4fbf4417fda08824d97ce3269c259e83, type: 3}

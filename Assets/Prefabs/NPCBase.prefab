@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 92466377284447079}
   - component: {fileID: 92466377284447078}
   m_Layer: 0
-  m_Name: NPC
+  m_Name: NPCBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,8 +296,8 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92466378464546069}
-  m_Text: "Hello yes me is cyrus go \nand get the bean please\nalso be careful of
-    crab\nyou have serious \nallergy and will die if \nyou touch them ok bye"
+  m_Text: "Alright: Your first task\nis to get the Bean at \nthe end of this beach.\nAlso,
+    grab any empty\npotions you find, it's \ngood to recycle!"
   m_OffsetZ: 0
   m_CharacterSize: 0.041666668
   m_LineSpacing: 1

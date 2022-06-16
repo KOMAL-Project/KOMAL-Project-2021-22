@@ -20,12 +20,14 @@ public class LevelReader : MonoBehaviour
     [SerializeField] Tile[] tileList;
     [SerializeField] TileBase[] ruleTiles;
     [SerializeField] private GroundType groundType;
+    [SerializeField] GameObject[] npcPrefabs;
 
     public Tilemap tiles;
     public List<GameObject> umbrellas = new List<GameObject>();
     public List<GameObject> crabs = new List<GameObject>();
     public List<GameObject> checkpoints = new List<GameObject>();
     public GameObject goal;
+    
 
     public GameObject tileMapObj;
 
@@ -42,6 +44,17 @@ public class LevelReader : MonoBehaviour
     Color checkpointColor = new Color(1, 0, 0);
     Color collectibleColor = new Color(178f / 255f, 0, 1);
     Color objectiveColor = new Color(1, 0 , 110f / 255f);
+
+    Color[] npcColors = {
+        new Color(255f / 255f, 133f / 255f, 133f / 255f), //red
+        new Color(255f / 255f, 184f / 255f, 133f / 255f), //orange
+        new Color(255f / 255f, 235f / 255f, 135f / 255f), //yellow
+        new Color(225f / 255f, 255f / 255f, 135f / 255f), //highlighter
+        new Color(175f / 255f, 255f / 255f, 133f / 255f), //lime
+        new Color(135f / 255f, 255f / 255f, 195f / 255f), //aqua
+        new Color(135f / 255f, 255f / 255f, 245f / 255f), //light bluei
+    };
+
 
     void Start()
     {
@@ -109,6 +122,10 @@ public class LevelReader : MonoBehaviour
                 {
                     GameObject tempGoal = Instantiate(goalPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)) + new Vector3(.5f, .5f, 0), Quaternion.identity);
                     goal = tempGoal;
+                }
+                else
+                {
+                    for(int k = 0; k < npcPrefabs.Length; k++) if(npcColors[k] == tempColor && npcPrefabs[k]) Instantiate(npcPrefabs[k], tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
                 }
 
             }
