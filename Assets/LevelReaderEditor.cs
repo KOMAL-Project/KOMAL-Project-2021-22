@@ -11,6 +11,8 @@ public class LevelReaderEditor : Editor
     {
         LevelReader mapGen = (LevelReader)target;
 
+        DrawDefaultInspector();
+
         if (GUILayout.Button("Generate"))
         {
             mapGen.GenerateLevel();
