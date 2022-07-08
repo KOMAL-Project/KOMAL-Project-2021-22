@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-// [ExecuteInEditMode] // ONLY UNCOMMENT IF LEVEL PREFABS ARE NOT IN THE GAME. DO NOT RELOAD THE SCENE MULTIPLE TIMES WHILE THIS IS ON.
+//[ExecuteInEditMode] // ONLY UNCOMMENT IF LEVEL PREFABS ARE NOT IN THE GAME. DO NOT RELOAD THE SCENE MULTIPLE TIMES WHILE THIS IS ON.
 public class LevelReader : MonoBehaviour
 {
 
@@ -17,7 +17,7 @@ public class LevelReader : MonoBehaviour
         SAND,
     }
 
-    
+    List<GameObject> gamePrefabs = new List<GameObject>();
 
     [SerializeField] private Texture2D level;
     [SerializeField] Tile[] tileList;
@@ -69,7 +69,14 @@ public class LevelReader : MonoBehaviour
         if(run) GenerateLevel();
     }
     
-    
+    public void DestroyGamePrefabs()
+    {
+        foreach(GameObject g in gamePrefabs)
+        {
+            DestroyImmediate(g);
+        }
+    }
+
     public void GenerateLevel()
     {
         for(int i = 0; i < level.width; i++)
@@ -102,37 +109,43 @@ public class LevelReader : MonoBehaviour
 
                     GameObject tempUmbrella = Instantiate(umbrellaPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j+1, 0)), Quaternion.identity);
                     umbrellas.Add(tempUmbrella);
+                    gamePrefabs.Add(tempUmbrella);
                 }
                 else if(tempColor == checkpointColor)
                 {
                     GameObject tempCheckpoint = Instantiate(checkpointPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)) + new Vector3(.5f, .5f, 0), Quaternion.identity);
                     checkpoints.Add(tempCheckpoint);
+                    gamePrefabs.Add(tempCheckpoint);
                 }
                 else if (tempColor == crabColor)
                 {
                     GameObject tempCrab;
                     tempCrab = Instantiate(crabPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
                     crabs.Add(tempCrab);
+                    gamePrefabs.Add(tempCrab);
                 }
                 else if(tempColor == megaCrabColor)
                 {
-                    GameObject tempCrab;
+                    GameObject tempCrab = null;
                     if (level.GetPixel(i + 1, j + 1) == megaCrabColor && level.GetPixel(i, j + 1) == megaCrabColor && level.GetPixel(i + 1, j) == megaCrabColor) tempCrab = Instantiate(megaCrabPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)) + new Vector3(0, 1, 0), Quaternion.identity);
+                    if(tempCrab != null) gamePrefabs.Add(tempCrab);
                 
                 }
                 else if (tempColor == collectibleColor)
                 {
                     GameObject tempCollect = Instantiate(collectPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)) + new Vector3(0, .5f, 0), Quaternion.identity);
+                    gamePrefabs.Add(tempCollect);
                     
                 }
                 else if (tempColor == objectiveColor)
                 {
                     GameObject tempGoal = Instantiate(goalPrefab, tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)) + new Vector3(.5f, .5f, 0), Quaternion.identity);
                     goal = tempGoal;
+                    gamePrefabs.Add(tempGoal);
                 }
                 else
                 {
-                    for(int k = 0; k < npcPrefabs.Length; k++) if(npcColors[k] == tempColor && npcPrefabs[k]) Instantiate(npcPrefabs[k], tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
+                    for(int k = 0; k < npcPrefabs.Length; k++) if(npcColors[k] == tempColor && npcPrefabs[k]) gamePrefabs.Add(Instantiate(npcPrefabs[k], tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity));
                 }
 
 
