@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+// [ExecuteInEditMode] // ONLY UNCOMMENT IF LEVEL PREFABS ARE NOT IN THE GAME. DO NOT RELOAD THE SCENE MULTIPLE TIMES WHILE THIS IS ON.
 public class LevelReader : MonoBehaviour
 {
+
+    private bool run = true; // Extra switch you need to flip false for normal use. Should not be true normally, but should be true when trying to restore assets in the level.
 
     [SerializeField] private GameObject umbrellaPrefab, crabPrefab, megaCrabPrefab, checkpointPrefab, goalPrefab, collectPrefab;
 
@@ -45,6 +48,8 @@ public class LevelReader : MonoBehaviour
     Color collectibleColor = new Color(178f / 255f, 0, 1);
     Color objectiveColor = new Color(1, 0 , 110f / 255f);
 
+   
+
     Color[] npcColors = {
         new Color(255f / 255f, 133f / 255f, 133f / 255f), //red
         new Color(255f / 255f, 184f / 255f, 133f / 255f), //orange
@@ -55,13 +60,15 @@ public class LevelReader : MonoBehaviour
         new Color(135f / 255f, 255f / 255f, 245f / 255f), //light bluei
     };
 
+    
 
-    void Start()
+   
+    void Awake()
     {
         tiles = tileMapObj.GetComponent<Tilemap>();
-
-        GenerateLevel();
+        if(run) GenerateLevel();
     }
+    
     
     public void GenerateLevel()
     {
@@ -71,7 +78,7 @@ public class LevelReader : MonoBehaviour
             {
                 Color tempColor = level.GetPixel(i,j);
 
-                
+
                 if (tempColor == platformColor)
                 { //TEST
                     tiles.SetTile(new Vector3Int(i, j, 0), ruleTiles[0]);
@@ -128,7 +135,10 @@ public class LevelReader : MonoBehaviour
                     for(int k = 0; k < npcPrefabs.Length; k++) if(npcColors[k] == tempColor && npcPrefabs[k]) Instantiate(npcPrefabs[k], tiles.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
                 }
 
+
+                
             }
         }
     }
+    
 }

@@ -6,7 +6,7 @@ public class CrabController : MonoBehaviour
 {
 
     [SerializeField] int initialDirection; // which way should the crab be going upon Awake? (1 = right, 0 = left)
-    [SerializeField] float speed;
+    [SerializeField] float speed = 3;
     [SerializeField] int distanceBound; // How far the crab can go from the spawn point
     private Rigidbody2D rb;
     private Vector3 spawn;

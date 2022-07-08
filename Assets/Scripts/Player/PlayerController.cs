@@ -104,6 +104,8 @@ public class PlayerController : MonoBehaviour
             {
                 umbrellaScript values = collision.GetComponent<umbrellaScript>();
                 GetComponentsInChildren<AudioSource>()[5].Play(); // Bounce SFX
+                collision.gameObject.GetComponentInChildren<Animator>().Play("Bounce");
+                //Debug.Log(values.launchSpeed);
                 if (values) Bounce(values.launchSpeed, values.maintainVelocityPercent);
             }
             else if (collision.gameObject.CompareTag("Checkpoint"))
@@ -177,6 +179,8 @@ public class PlayerController : MonoBehaviour
 
     void Bounce(float launchHeight, float maintainVelocityPercent) 
     {
-        rb.velocity = new Vector2(rb.velocity.x, launchHeight + (-rb.velocity.y * maintainVelocityPercent));
+        Debug.Log("pre" + rb.velocity.y);
+        rb.velocity = new Vector2(rb.velocity.x, launchHeight + (-rb.velocity.y/32 * maintainVelocityPercent));
+        Debug.Log("post" + rb.velocity.y);
     }
 }

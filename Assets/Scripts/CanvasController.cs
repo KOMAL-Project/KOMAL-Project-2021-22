@@ -8,7 +8,7 @@ public class CanvasController : MonoBehaviour
 {
     [SerializeField] private Button restartBtn, jumpBtn;
     [SerializeField] Image joystick;
-    [SerializeField] private GameObject endUI, score;
+    [SerializeField] private GameObject endUI, score, demoUI;
 
     public void LevelEnd()
     {
@@ -22,6 +22,11 @@ public class CanvasController : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartLevel()
+    {
+        Destroy(demoUI);
     }
 
     public void SetScore(int num)
