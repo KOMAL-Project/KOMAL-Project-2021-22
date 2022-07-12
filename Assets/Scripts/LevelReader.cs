@@ -88,7 +88,7 @@ public class LevelReader : MonoBehaviour
 
                 if (tempColor == platformColor)
                 { //TEST
-                    tiles.SetTile(new Vector3Int(i, j, 0), ruleTiles[0]);
+                    tiles.SetTile(new Vector3Int(i, j, 0), ruleTiles[4]);
                 }
                 else if (tempColor == grassColor)
                 { //GRASS
